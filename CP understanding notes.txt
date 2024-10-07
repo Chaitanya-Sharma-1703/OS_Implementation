@@ -1,0 +1,105 @@
+PI- Program Interruypt
+TI- Time Interrupt
+SI - System Interrupt
+
+DTA- Data trnsfer area
+LR - Load Register
+PD- 
+
+
+$AMJ000100030001
+GD10PD10H
+$DTA
+HELLO WORLD
+$END0001
+$AMJ000200030004
+GD20GD30GD40GD50LR20CR30BT09PD50HPD40H
+$DTA
+VIT
+VIT
+IS SAME
+NOT SAME
+$END0002
+$AMJ020200160005
+GD20PD20LR20SR30SR31PD30SR40SR41SR42PD40
+H
+$DTA
+*
+$END0202
+$AMJ010100160005
+GD20PD20LR20SR30SR31PD30SR40SR41SR42PD40
+SR51SR52PD50SR61PD60H
+$DTA
+*
+$END0202
+//Max capacity of program is 40B
+//MIn 1 B and Max 4 B
+//H- halt
+// Halt will come after the end of teh program 
+// 7 types instructions
+// GD- Get Datafrom data card
+// GD10 - 10th memory location 
+// secondary memory is in our laptop
+// and In this program we are replicating functions of RAM and CPU.
+/*
+PD meaning Put data go to the given memory location and then print the data at that location into the output file
+
+instruction counter first sets to that instruction and that instruction is called into IR the size will be always 4 B
+
+LR Load register with the given memory location in to the generel purpose register
+
+SR Store register meaning store the data in the register to the given memory location
+
+CR Compare register compare the data in the registers and return true or false
+
+Branch on true: based on a c variables value we will decide whether we will branch or not.
+
+When will C will be true?
+When the Compare register will return true C will be true.
+else it will store false;
+ 0    1     2   3    4    5   6
+GD20 PD20 GD30 PD30 GD40 PD40 H
+ 0     1    2   3    4    5    6    7   8  9
+GD20 GD30 GD40 GD50 LR20 CR30 PT09 PD50 H PD40
+ 
+$DTA is a control card which represents DATA and tells that the DATA is coming as an input in the next line.
+
+(SI- Service Interrupt)
+INterrupt 1 - For user input
+INterrupt 2- Data put in the output file
+Interrupt 3 - Termination Of Program
+
+IN the memory we have 100 words 10 
+word meaning 1 block memory is of 10 blocks with 
+word size of 4B
+
+Get Data and Put Data works on Block 
+and remaining word data 
+
+$AMJ000500150 003- represents no of datalines 
+
+GD, SR takes 2 sec max to run 
+and rest takes 1 sec 
+
+*/ 
+
+
+
+$AMJ 0101(JOB_ID) 0016(MAX_TIME_LIMIT ALLOWED) 0005 //cONTROL cARD
+
+GD20PD20LR20SR30PD30SR40SR41PD40H
+$DTA //
+*
+$END0101
+$AMJ030300160005
+GD20LR20SR20SR21SR22PD20SR30SR31SR32PD30
+SR40SR41SR42PD40H
+$DTA
+* //DAta card
+$END0303
+$AMJ040400160005
+GD20LR20SR20SR21SR22PD20SR30SR32PD30SR40
+SR41SR42PD40H
+$DTA
+*
+$END0404

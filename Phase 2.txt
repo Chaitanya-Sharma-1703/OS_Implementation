@@ -1,0 +1,24 @@
+Phase 2:
+paging 10 words
+page table entry == ptr + va/10;
+RA = M[PT]*10 + VA%10;
+PTE = Page table entry;
+PTR = Page table register(stores start location of the page table entry)
+VA = Virtual Address
+
+Here page table is allocated by OS randomly in the matrix grid of 300X4;
+
+PI=1 OP code error;
+PI =2 Operand error; 
+PI = 3 page fault;
+
+GD and SR will always give valid page fault;
+MOS = terminate, GD, PD and error resolving
+TI:0  NO TLE;
+TI: 2 TLE;
+
+0001 LINE LIMIT EXCEEDED
+2 PD10 2 1
+first occurence2 = Instruction Counter 
+second occurence 2 = TLC Time limit counter
+Third number = Data cards succefully received
